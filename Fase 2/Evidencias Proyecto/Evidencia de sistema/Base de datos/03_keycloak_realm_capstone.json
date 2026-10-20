@@ -1,0 +1,76 @@
+{
+  "realm": "capstone-realm",
+  "enabled": true,
+  "displayName": "Masterbase",
+  "sslRequired": "none",
+  "loginWithEmailAllowed": true,
+  "duplicateEmailsAllowed": false,
+  "resetPasswordAllowed": true,
+  "rememberMe": true,
+  "loginTheme": "capstone",
+  "internationalizationEnabled": true,
+  "supportedLocales": [
+    "es"
+  ],
+  "defaultLocale": "es",
+  "browserFlow": "browser",
+  "bruteForceProtected": true,
+  "permanentLockout": false,
+  "maxTemporaryLockouts": 0,
+  "failureFactor": 4,
+  "waitIncrementSeconds": 1800,
+  "minimumQuickLoginWaitSeconds": 60,
+  "maxFailureWaitSeconds": 1800,
+  "quickLoginCheckMilliSeconds": 1000,
+  "maxDeltaTimeSeconds": 1800,
+  "clients": [
+    {
+      "clientId": "capstone-client",
+      "enabled": true,
+      "publicClient": true,
+      "standardFlowEnabled": true,
+      "directAccessGrantsEnabled": true,
+      "redirectUris": [
+        "http://localhost:3000/*",
+        "http://localhost:5173/*",
+        "http://127.0.0.1:3000/*",
+        "http://127.0.0.1:5173/*"
+      ],
+      "webOrigins": [
+        "http://localhost:3000",
+        "http://localhost:5173",
+        "http://127.0.0.1:3000",
+        "http://127.0.0.1:5173"
+      ]
+    }
+  ],
+  "roles": {
+    "realm": [
+      {
+        "name": "ADMIN",
+        "description": "Administrador global del sistema (gestionado en Keycloak)"
+      }
+    ]
+  },
+  "users": [
+    {
+      "id": "b0000000-0000-0000-0000-000000000001",
+      "username": "admin",
+      "enabled": true,
+      "email": "admin@capstone.local",
+      "emailVerified": true,
+      "firstName": "Admin",
+      "lastName": "Capstone",
+      "credentials": [
+        {
+          "type": "password",
+          "value": "Admin.Capstone2026",
+          "temporary": true
+        }
+      ],
+      "realmRoles": [
+        "ADMIN"
+      ]
+    }
+  ]
+}
