@@ -1,6 +1,6 @@
 # Scripts de base de datos y servicios
 
-Scripts para crear desde cero el almacenamiento del sistema y dejarlo en su estado inicial de entrega al cliente.
+Scripts para crear desde cero el almacenamiento del sistema y dejarlo en su estado inicial.
 
 | Orden | Archivo | Qué hace | Se ejecuta con |
 |---|---|---|---|
@@ -8,11 +8,11 @@ Scripts para crear desde cero el almacenamiento del sistema y dejarlo en su esta
 | 1 | `01_creacion_bd.sql` | Limpia `sistema_db` y crea el modelo completo: 26 tablas, 10 vistas, funciones y triggers | `sistema_user` |
 | 2 | `02_poblamiento_bd.sql` | Carga los catálogos estándar y el administrador global | `sistema_user` |
 | 3 | `03_keycloak_realm_capstone.json` | Realm de Keycloak: cliente, rol `ADMIN`, bloqueo tras 4 intentos y administrador global | Lo importa el paso 4 |
-| 4 | `04_configuracion_servicios.sh` | Importa el realm, activa el aviso de bloqueo y crea el bucket privado de MinIO | Bash, con los contenedores en ejecución |
+| 4 | `04_configuracion_servicios.sh` | Importa el realm, activa el aviso de bloqueo y crea el bucket privado de MinIO | Bash, con los contenedores del sistema en ejecución |
 
 ## Ejecución
 
-Con el entorno levantado (`docker compose up -d`), desde esta carpeta:
+Con el entorno levantado (`docker compose up -d`):
 
 ```bash
 docker exec -i capstone-postgres psql -U postgres -d postgres < 00_crear_bases_datos.sql
@@ -39,6 +39,4 @@ Se entrega sin áreas, sin solicitudes y con un único usuario, el administrador
 |---|---|
 | admin@capstone.local | `Admin.Capstone2026` |
 
-La contraseña es temporal: Keycloak exige cambiarla en el primer inicio de sesión. Desde esa cuenta el cliente crea su estructura de áreas, sus usuarios y sus roles.
-
-Antes de instalar en el ambiente del cliente hay que agregar su dominio a `redirectUris` y `webOrigins` del cliente `capstone-client` en el archivo del realm.
+La contraseña es temporal: Keycloak exige cambiarla en el primer inicio de sesión.
